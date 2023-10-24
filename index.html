@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .upload-form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .upload-form input[type="file"] {
+            display: none;
+        }
+        .upload-form label {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .upload-form label:hover {
+            background-color: #45a049;
+        }
+        .output {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .output a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>File Upload</h1>
+        <form class="upload-form" action="upload.php" method="post" enctype="multipart/form-data">
+            <label for="file">Choose a file</label>
+            <input type="file" id="file" name="file" accept="image/*,audio/*,video/*">
+            <input type="submit" value="Upload">
+        </form>
+        <div class="output">
+            <?php
+            if(isset($_GET['link'])) {
+                $link = $_GET['link'];
+                echo '<a href="' . $link . '" target="_blank">Click here to view your file</a>';
+            }
+            ?>
+        </div>
+    </div>
+</body>
+</html>
